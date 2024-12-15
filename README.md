@@ -1,74 +1,153 @@
 *This is a template repository for this organization. Start by replacing the placeholder for the project name with its actual title.*
 
-# [Demonstration Project title]
+# AI-based Quality Assurance and Control System for Enhancing a Coordinate Measuring Machine with Machine Vision. 
 
 ## Summary
-| Company Name | [Company](https://website.link) |
+| Company Name | [ProtoLab OÜ](https://protolab.io) |
 | :--- | :--- |
-| Development Team Lead Name | [Dr. John Smith](https://profile.link) |
-| Development Team Lead E-mail | [email@example.com](mailto:email@example.com) |
-| Duration of the Demonstration Project | month/year-month/year |
-| Final Report | [Example_report.pdf](https://github.com/ai-robotics-estonia/_project_template_/files/13800685/IC-One-Page-Project-Status-Report-10673_PDF.pdf) |
+| Development Team Lead Name | [Karl Kruusamäe](https://www.etis.ee/CV/Karl_Kruusamae/eng) |
+| Development Team Lead E-mail | [karl.kruusamae@ut.ee](mailto:karl.kruusamae@ut.ee) |
+| Duration of the Demonstration Project | 12/2023-10/2024 |
+| Final Report | [final_report.pdf](./files/final_report.pdf) |
 
-### Each project has an alternative for documentation
-1. Fill in the [description](#description) directly in the README below *OR*;
-2. make a [custom agreement with the AIRE team](#custom-agreement-with-the-AIRE-team).
 
 # Description
 ## Objectives of the Demonstration Project
-*Please describe your project objectives in detail.*
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The primary objective of this demonstration project was to test and validate an AI-based quality control system that enables optimal utilization of industrial coordinate measuring machines (CMM), including empowering manufacturing companies with a fully autonomous (robotized) specimen loading system. The project aimed to validate a system capable of measuring 100% of products with minimal human intervention and system reconfiguration requirements.
 
 ## Activities and Results of the Demonstration Project
 ### Challenge
-*Please describe challenge addressed (i.e, whether and how the initial challenge was changed during the project, for which investment the demonstration project was provided).*
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The demonstration project addressed a key challenge in high-mix, low-volume manufacturing environments, where small and medium-sized enterprises (SMEs) produce diverse products in small batches. The primary challenge was the inefficient quality control process that relied either on manual inspection or coordinate measuring machines (CMM). When using CMM, each unique part required custom fixtures and machine reconfiguration, making the quality control process disproportionately time-consuming and costly for small batch productions.
+
+The market lacked an automated solution where a CMM could identify parts, detect their position, and initiate appropriate measurement programs without manual setup. This technological gap drove the development of our AI-based solution, with the core challenge remaining consistent throughout the project's duration.
+
 
 ### Data Sources
-*Please describe which data was used for the technological solution.*  
-- [Source 1],
-- [Source 2],
-- etc... .
+The project relied on two types of data sources:
+
+1. Real-world Data
+   - Custom dataset collected specifically during the project implementation
+   - Captured images of actual parts under various measurement conditions
+
+2. Synthetic Training Data
+   - Generated using DOPE repository scripts
+   - Approximately 20,000 synthetic images per training set
+   - Generation process typically required 12+ hours of computation time
+   - Synthetic data proved sufficient for initial model training and validation
 
 ### AI Technologies
-*Please describe and justify the use of selected AI technologies.*
-- [AI technology 1],
-- [AI technology 2],
-- etc... .
+The project implemented two AI-based approaches for part detection and positioning:
+
+1. Computer Vision-based Solution (Find Object ROS) 
+   - Traditional image processing algorithms for object detection
+   - Suitable for controlled environments with consistent lighting
+   - Requires minimal training but needs careful calibration
+
+2. Deep Learning Solution (DOPE) 
+   - Advanced neural network architecture for precise pose estimation
+   - More robust against environmental variations
+   - Requires substantial training data but offers better generalization
+
+The AI technology was specifically chosen to eliminate the need for mechanical fixtures and extensive operator training. By integrating AI-based part detection and positioning with the coordinate measuring machine, the system automatically provides necessary instructions and initial conditions for measurements and report generation. This technological choice was justified by its ability to:
+- Automate part recognition and positioning
+- Reduce setup time between different product types
+- Minimize human intervention in the measurement process
+- Enable flexible quality control for diverse product lines
 
 ### Technological Results
-*Please describe the results of testing and validating the technological solution.*
+The two implemented approaches were extensively tested, revealing distinct advantages and limitations:
+1. Find Object Approach 
+   - Quick implementation with minimal setup time for new objects
+   - Performance varied significantly between different object types: 
+     - Simple objects (e.g., Gear): Reliable detection with single reference image
+     - Complex objects (e.g., Fork): Required multiple reference images
+   - Key limitations identified: 
+     - High sensitivity to light reflections on metallic surfaces
+     - Poor performance with objects lacking distinct surface features
+     - Detection reliability heavily dependent on consistent lighting conditions
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+2. DOPE (Deep Object Pose Estimation) Approach 
+   - Demonstrated more robust detection capabilities
+   - Implementation challenges: 
+     - Extensive preparation time required
+     - Resource-intensive model training process
+     - Data generation requirements disproportionate to final tool quality
+   - Cost-benefit analysis indicated that the current implementation may be impractical for rapid deployment in high-mix manufacturing environments
+
+The testing phase concluded that while both approaches are technically viable, further optimization would be needed for industrial-scale implementation, particularly in environments requiring frequent introduction of new parts.
+
 
 ### Technical Architecture
-*Please describe the technical architecture (e.g, presented graphically, where the technical solution integration with the existing system can also be seen).*
-- [Component 1],
-- [Component 2], 
-- etc... .
 
-![backend-architecture](https://github.com/ai-robotics-estonia/_project_template_/assets/15941300/6d405b21-3454-4bd3-9de5-d4daad7ac5b7)
+![backend-architecture](./assets/system_overview.png)
 
 
 ### User Interface 
-*Please describe the details about the user interface(i.e, how does the client 'see' the technical result, whether a separate user interface was developed, command line script was developed, was it validated as an experiment, can the results be seen in ERP or are they integrated into work process)*
+During this demonstration project, the focus remained on validating the core technological solution rather than developing a dedicated user interface. The interaction with the system was facilitated through:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+1. Existing Tool Interfaces 
+   - Native GUI of the coordinate measuring machine
+   - ROS-based visualization tools for pose estimation validation
+   - Command-line interface for system configuration and control
+2. Development Environment 
+   - Direct command-line access for testing and debugging
+   - Visualization tools for real-time pose estimation results
+   - Standard output for system status and measurements
+
+While a production-ready interface was not part of this project's scope, the successful validation of core functionalities provides a solid foundation for future user interface development that could include:
+- Integration with existing ERP systems
+- Custom GUI for operator interaction
+- Automated reporting dashboard
+- Real-time monitoring interface
 
 ### Future Potential of the Technical Solution
-*Please describe the potential areas for future use of the technical solution.*
-- [Use case 1],
-- [Use case 2],
-- etc... .
+While initially developed for CMM-based quality control, the AI-based object detection and pose estimation system demonstrates potential for broader industrial applications:
+
+1. Manufacturing Operations 
+   - Automated pick-and-place operations in flexible production lines
+   - Quality control integration in various manufacturing processes
+   - Assembly line automation with mixed product variants
+   - Part sorting and classification in production environments
+
+2. Warehouse and Logistics 
+   - Automated inventory management of unstructured stock
+   - Intelligent bin picking systems for order fulfillment
+   - Mixed-item package handling and sorting
+   - Automated loading/unloading operations
+
+3. Robotics Applications 
+   - General-purpose robotic grasping systems
+   - Collaborative robot implementations
+   - Flexible automation cells
+   - Multi-purpose robotic workstations
+
+4. Quality Control Integration 
+   - Integration with other measurement and inspection systems
+   - Automated defect detection systems
+   - In-line quality verification processes
+   - Material handling in testing facilities
+
+The solution's ability to handle varied objects makes it particularly valuable in environments requiring flexible automation and precise object manipulation.
+
 
 ### Lessons Learned
-*Please describe the lessons learned (i.e. assessment whether the technological solution actually solved the initial challenge).*
+The demonstration project successfully validated the technical feasibility of AI-based quality control automation, while also revealing important insights for future implementations:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Key Successes:
+- Confirmed the viability of AI-powered part detection and positioning for CMM applications
+- Successfully demonstrated automated measurement program selection
+- Proved the concept of fixture-free quality control for diverse parts
 
-# Custom agreement with the AIRE team
-*If you have a unique project or specific requirements that don't fit neatly into the Docker file or description template options, we welcome custom agreements with our AIRE team. This option allows flexibility in collaborating with us to ensure your project's needs are met effectively.*
+Critical Challenges:
+- Object library expansion requires significant effort and technical expertise
+- Current workflow for introducing new parts is not optimized for production environments
+- Time investment for training varies significantly between different part types
 
-*To explore this option, please contact our demonstration projects service manager via katre.eljas@taltech.ee with the subject line "Demonstration Project Custom Agreement Request - [Your Project Name]." In your email, briefly describe your project and your specific documentation or collaboration needs. Our team will promptly respond to initiate a conversation about tailoring a solution that aligns with your project goals.*
+Areas for Improvement:
+- Need for streamlined tools and processes for adding new parts to the system
+- Requirement for more user-friendly interfaces for quality control personnel
+- Opportunity to optimize the balance between setup time and detection reliability
+
+While the core technology demonstrates strong potential for solving the initial challenge of flexible quality control automation, the project highlighted the importance of developing supporting tools and workflows for practical industrial deployment.

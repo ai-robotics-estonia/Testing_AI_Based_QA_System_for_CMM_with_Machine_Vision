@@ -1,0 +1,46 @@
+topic_camera: "/camera/color/image_raw"
+topic_camera_info: "/camera/color/camera_info"
+topic_publishing: "dope"
+input_is_rectified: True   # Whether the input image is rectified (strongly suggested!)
+downscale_height: 400      # if the input image is larger than this, scale it down to this pixel height
+
+# Comment any of these lines to prevent detection / pose estimation of that object
+weights: {
+    "obj":"package://dope/weights/Cuboid5.pth",
+}
+
+# Cuboid dimension in cm x,y,z
+dimensions: {
+    "obj": [5.0, 2.0, 3.0],
+}
+
+class_ids: {
+    "obj": 1
+}
+
+draw_colors: {
+    "obj": [232, 222, 12],  # yellow
+}
+
+# optional: provide a transform that is applied to the pose returned by DOPE
+model_transforms: {}
+
+# optional: if you provide a mesh of the object here, a mesh marker will be
+# published for visualization in RViz
+meshes: {}
+
+# optional: If the specified meshes are not in meters, provide a scale here (e.g. if the mesh is in centimeters, scale should be 0.01). default scale: 1.0.
+mesh_scales: {
+    "obj":  0.01,
+}
+
+overlay_belief_images: True   # Whether to overlay the input image on the belief images published on /dope/belief_[obj_name]
+
+# Config params for DOPE
+thresh_angle: 0.5
+thresh_map: 0.001
+sigma: 6
+thresh_points: 0.01
+
+
+
