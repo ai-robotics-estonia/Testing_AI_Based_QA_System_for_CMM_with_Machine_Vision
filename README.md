@@ -1,5 +1,3 @@
-*This is a template repository for this organization. Start by replacing the placeholder for the project name with its actual title.*
-
 # AI-based Quality Assurance and Control System for Enhancing a Coordinate Measuring Machine with Machine Vision. 
 
 ## Summary
